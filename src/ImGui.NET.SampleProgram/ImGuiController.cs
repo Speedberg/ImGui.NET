@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using System.Reflection;
 using System.IO;
 using Veldrid;
@@ -470,7 +470,7 @@ namespace ImGuiNET
 
             // Setup orthographic projection matrix into our constant buffer
             ImGuiIOPtr io = ImGui.GetIO();
-            Matrix4x4 mvp = Matrix4x4.CreateOrthographicOffCenter(
+            Matrix mvp = Matrix.CreateOrthographicOffCenter(
                 0f,
                 io.DisplaySize.X,
                 io.DisplaySize.Y,
