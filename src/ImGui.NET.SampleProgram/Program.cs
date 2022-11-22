@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using ImPlotNET;
 using Veldrid;
 using Veldrid.Sdl2;
@@ -46,7 +46,7 @@ namespace ImGuiNET
                 _controller.WindowResized(_window.Width, _window.Height);
             };
             _cl = _gd.ResourceFactory.CreateCommandList();
-            _controller = new ImGuiController(_gd, _gd.MainSwapchain.Framebuffer.OutputDescription, _window.Width, _window.Height);
+            _controller = new ImGuiController(_gd, _window, _gd.MainSwapchain.Framebuffer.OutputDescription, _window.Width, _window.Height);
             // _memoryEditor = new MemoryEditor();
             Random random = new Random();
             _memoryEditorData = Enumerable.Range(0, 1024).Select(i => (byte)random.Next(255)).ToArray();
@@ -67,6 +67,7 @@ namespace ImGuiNET
                 _cl.End();
                 _gd.SubmitCommands(_cl);
                 _gd.SwapBuffers(_gd.MainSwapchain);
+                _controller.SwapExtraWindows(_gd);
             }
 
             // Clean up Veldrid resources
