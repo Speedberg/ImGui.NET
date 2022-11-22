@@ -90,6 +90,7 @@ namespace ImGuiNET
                 //ImGui.ColorEdit3("clear color", ref _clearColor);                   // Edit 3 floats representing a color
 
                 ImGui.Text($"Mouse position: {ImGui.GetMousePos()}");
+                ImGui.Text($"Mouse down: {ImGui.GetIO().MouseDown[0]}");
 
                 ImGui.Checkbox("ImGui Demo Window", ref _showImGuiDemoWindow);                 // Edit bools storing our windows open/close state
                 ImGui.Checkbox("Another Window", ref _showAnotherWindow);
@@ -161,9 +162,9 @@ namespace ImGuiNET
                     if ((s_tab_bar_flags & (uint)ImGuiTabBarFlags.FittingPolicyMask) == 0)
                         s_tab_bar_flags |= (uint)ImGuiTabBarFlags.FittingPolicyDefault;
                     if (ImGui.CheckboxFlags("ImGuiTabBarFlags_FittingPolicyResizeDown", ref s_tab_bar_flags, (uint)ImGuiTabBarFlags.FittingPolicyResizeDown))
-                s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyResizeDown);
+                        s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyResizeDown);
                     if (ImGui.CheckboxFlags("ImGuiTabBarFlags_FittingPolicyScroll", ref s_tab_bar_flags, (uint)ImGuiTabBarFlags.FittingPolicyScroll))
-                s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyScroll);
+                        s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyScroll);
 
                     // Tab Bar
                     string[] names = { "Artichoke", "Beetroot", "Celery", "Daikon" };
